@@ -15,7 +15,7 @@ def howSum(targetSum, numbers):
 print(howSum(7, [2,3]))
 print(howSum(7, [5,3,4,7])) 
 print(howSum(7, [2,4]))
-print(howSum(8, [2,3,5]))   
+ 
 
 '''The above method doesnt work for larger array or if the targetSum is very large'''
 '''m = targetSum, n = numbers length 

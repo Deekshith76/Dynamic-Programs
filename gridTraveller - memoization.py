@@ -40,4 +40,25 @@ def gridT(m, n, memo = dict()):
 print(gridT(3, 4))
 #print(gridT(34, 43))
 
+#Tabulation Method
+
+def gridTravelert(m,n):
+    table = [[0] * (n+1) for _ in range(m+1)]
+    table[1][1] = 1
+    for i in range(m+1):
+        for j in range(n+1):
+            current = table[i][j]
+            if j+1 <= n:
+                table[i][j+1] += current
+            if i+1 <= m:
+                table[i+1][j] += current
+    return table[m][n]
+
+print(gridTravelert(3,3))  
+print(gridTravelert(34, 43))
+
+'''
+Time Complexity: O(mn)
+Space Complexity: O(mn)
+'''
 

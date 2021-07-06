@@ -63,5 +63,28 @@ def bestSum2(targetSum, numbers, memo = None):
 print(bestSum2(7, [2,3,4,7]))
 print(bestSum2(8, [2,3,5]))
 print(bestSum2(8, [1,4,5]))
-print(bestSum2(100, [1,2,5,25]))
+#print(bestSum2(100, [1,2,5,25]))
+
+# Tabulation 
+
+def bestSumt(targetSum, numbers):
+    table = [None] * (targetSum + 1)
+    table[0] = []
     
+    for i in range(targetSum + 1):
+        if table[i] is not None:
+            for num in numbers:
+                if i+num <= targetSum:
+                    combination = table[i] + [num]
+                    if not(table[i+num]) or len(table[i+num]) > len(combination):
+                        table[i+num] = combination
+    return table[targetSum]
+
+print(bestSumt(8, [2,3,5]))
+print(bestSumt(8, [1,4,5]))
+print(bestSumt(100, [25,1,2,4]))
+
+'''
+Time Complexity : O(m^2 * n)
+Space Complexity: O(m^2)
+'''

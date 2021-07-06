@@ -44,10 +44,33 @@ def allConstruct2(target, wordBank, memo=None):
 print(allConstruct2('purple', ['purp','p','ur','le','purpl']))
 print(allConstruct2('abcdef', ['ab','abc','cd','def','abcd','ef','c']))
 print(allConstruct2('skateboard', ['bo','rd','ate','t','ska','sk','boar']))
-print(allConstruct2('aaaaaaaaaaaaaaaaaaaaaaaaz',['a','aa','aaa','aaaa','aaaaa','aaaaaaa']))
+print(allConstruct2('aaaaaaaaaaaaaaz', ['a','aa','aaa','aaaa','aaaaa','aaaaaaa']))
 
 '''
 Brute Force and Memoize:
 Time - O(n^m)
 Space - O(m)
+'''
+
+# Tabulation
+
+def allConstruct3(target, wordBank):
+    table = [[] for _ in range(len(target)+1)]
+    table[0] = [[]]
+    
+    for i in range(len(target)+1):
+            for word in wordBank:
+                if target[i: i+len(word)] == word:
+                    newCoimbinations = [combination + [word] for combination in table[i]]
+                    table[i + len(word)].extend(newCoimbinations) #dont just assign
+    return table[len(target)]
+            
+print(allConstruct3('purple', ['purp','p','ur','le','purpl']))
+print(allConstruct3('abcdef', ['ab','abc','cd','def','abcd','ef','c']))
+print(allConstruct3('skateboard', ['bo','rd','ate','t','ska','sk','boar']))
+print(allConstruct3('aaaaaaaaaaaz', ['a','aa','aaa','aaaa','aaaaa','aaaaaaa']))
+
+'''
+Time Complexity: O(n^m)
+Space Complexity: O(n^m)
 '''

@@ -61,6 +61,27 @@ n = wordBank length
 Time Complexity: O(n * m^2)
 Space Complexity: O(m^2)
 '''
-         
 
+# Tabulation
+
+def canConstruct3(target, wordBank):
+    table = [False] * (len(target) + 1)
+    table[0] = True
+    for i in range(len(target) + 1):
+        if table[i] is True:
+            for word in wordBank:
+                # if the word matches the characters starting at position i
+                if target[i:i+len(word)] == word:
+                    table[i + len(word)] = True
+    
+    return table[len(target)]
+
+print(canConstruct3('abcdef', ['ab','abc','cd','def','abcd']))
+print(canConstruct3('skateboard', ['bo','rd','ate','t','ska','sk','boar']))
+print(canConstruct3('enterpotentpot', ['a','p','ent','enter','et','o','t']))
+
+'''
+Time Complexity: O(m^2 * n)
+Space Complexity: O(m)
+'''
 

@@ -46,8 +46,30 @@ def canSum2(targetSum, numbers, memo=None):
     memo[targetSum] = False
     return False
     
-print(canSum2(777, [2,4,6]))
+#print(canSum2(777, [2,4,6]))
 print(canSum2(7, [2,3]))
 print(canSum2(1, [5,3,4,7]))
 print(canSum2(7, [2,4]))
 print(canSum2(8, [2,3,5]))
+
+# Tabulation
+
+def canSumt(targetSum, numbers):
+    table = [False] * (targetSum + 1)
+    table[0] = True
+    for i in range(targetSum+1):
+        if table[i] == True:
+            for num in numbers:
+                if i+num <= targetSum:
+                    table[i + num] = True
+    return table[targetSum]
+    
+    
+print(canSumt(777, [2,4,6]))
+print(canSumt(7, [5,3,4]))
+
+'''
+Time Complexity: O(mn)
+Space Complexity: O(m)
+'''
+    

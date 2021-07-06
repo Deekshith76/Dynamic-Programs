@@ -30,6 +30,29 @@ print(fibm(50))
 To make sure just draw the binary tree...
 '''
 
+#Tabulation
+
+def fibt(n):
+    table = [0] * (n+1) #one extra box than the input
+    table[1] = 1
+    for i in range(n-1):
+        table[i+1] += table[i]
+        table[i+2] += table[i]
+    table[-1] += table[-2]
+    return table[n]
+    
+
+print(fibt(6))
+print(fibt(25))
+print(fibt(2))
+print(fibt(100))
+
+"""
+Time complexity: O(n)
+Space complexity: O(n)
+"""
+    
+    
 
 
 
